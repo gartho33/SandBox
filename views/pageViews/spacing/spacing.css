@@ -1,0 +1,105 @@
+.leftPanel{
+    width: 235px;
+    float: left;
+    overflow: auto;
+    /* (window height) - (header height) - (sticky footer height X2) */
+    height: calc(99vh - 55px - 40px); 
+    min-height: 150px; 
+
+    margin: 3px 10px;
+    padding: 7px;
+    background: lightblue;
+}
+.leftPanel::-webkit-scrollbar {
+    width: 10px;
+}
+.leftPanel::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.4);
+}
+.leftPanel::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 7px;
+}
+.leftPanel::-webkit-scrollbar-thumb:hover {
+    background-color: #bbb;
+}
+.row{
+    height: 20px;
+    padding: 5px;
+    background: lightgray;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+.workWindow{
+    background: lightgreen;
+    padding: 7px;
+    overflow: hidden;
+    /* (window height) - (header height) - (sticky footer height X2) - (margin height X2) */
+    height: calc(100vh - 55px - 40px - 0px);
+    min-height: 200px;
+}
+.window{
+    position: relative;
+    border: 1px solid gray;
+    padding: 5px 2px;
+    overflow: auto;
+    border-radius: 7px;
+    /* (available height) - (workWindow padding x2) - (margin height X2) */
+    height: calc(100% - 14px - 0px);
+}
+.search{
+    background: rgba(0,0,0,.7);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    display: none;
+}
+.workArea{
+    position: relative;
+    background: lightyellow;
+    height: 800px;
+}
+.scrollArea{
+    background: lightblue;
+    padding: 7px;
+    width: 300px;
+    margin: 0px auto;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    max-height: 200px;
+    padding: 7px;
+    overflow: auto;
+}
+
+@keyframes flash{
+    0%{
+        box-shadow: 0px 0px 0px transparent;
+    }
+    10%{
+        box-shadow: 0px 0px 3px rgba(255,0,0,.7) inset;
+    }
+    20%{
+        box-shadow: 0px 0px 5px rgba(255,0,0,.7) inset;
+    }
+    50%{
+        box-shadow: 0px 0px 10px rgba(255,0,0,.7) inset;
+    }
+    80%{
+        box-shadow: 0px 0px 5px rgba(255,0,0,.7) inset;
+    }
+    90%{
+        box-shadow: 0px 0px 3px rgba(255,0,0,.7) inset;
+    }
+    100%{
+        box-shadow: 0px 0px 0px transparent;
+    }
+}
+.flash{
+        animation: flash 1s ease-in-out 1;
+    }

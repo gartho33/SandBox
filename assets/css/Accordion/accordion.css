@@ -1,0 +1,87 @@
+button.accordion{
+    background: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 1s;
+}
+.accordion label{
+    cursor: inherit;
+}
+button.accordion.active, button.accordion:hover{
+    background: #ddd;
+}
+div.panel{
+    padding: 0px;
+	margin: 0px;
+    background: white;
+    border: 1px solid #CFCFCF;
+    height: auto;
+    overflow: hidden;
+    transition: .6s ease-in-out;
+    opacity: 0;
+}
+div.panel.show{
+    opacity: 1;
+    height: auto;
+    overflow: auto;
+    background: #E3E3E3;
+    padding: 7px;
+    margin: 3px 2%;
+}
+div.arrow{
+    display: inline-block;
+    height: 0px;
+    width: 0px;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+    position: relative;
+    top: 2px;
+    left: 0px;
+}
+div.arrow.active{
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid black;
+    border-right: 5px solid transparent;
+    border-top: 5px solid transparent;
+    top: 0px;
+    left: 2px;
+}
+
+p, h3{
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+}
+.toolTip{
+    display: none;
+}
+
+.qtip.myCustomClass{
+    border-color: rgb(0,190,0);
+    background-color: #ddd;
+    border-radius: 7px;
+}
+
+#noticeBox{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+#noticeBox .qtip{
+    position: static;
+    min-height: 0;
+    overflow: hidden;
+    margin: 0 0 5px 0;
+}
+
+#jqueryui-slider{
+    width: 200px;
+    margin: 20px;
+}

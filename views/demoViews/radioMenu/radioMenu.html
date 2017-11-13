@@ -1,0 +1,54 @@
+<style>
+    .menuButtons{
+        display: inline-block;
+    }
+    .menuButtons div{
+        display: inline-block;
+        margin-left: 10px;
+    }
+    .radioButton{
+        position: relative;
+        border: 1px solid gray;
+        border-radius: 5px;
+        color: black;
+        cursor: pointer;
+        overflow: hidden;
+        text-align: center;
+    }
+    .radioButton:active{
+        top: 2px;
+        left: 1px;
+    }
+    .radioButton label{
+        display: block;
+        background: white;
+        cursor: inherit;    
+        padding: 3px;
+    }
+    input:checked + label{
+        background: blue;
+        color: white;
+    }
+    input[type=radio]{
+        display: none;
+    }
+    #menuSelection{
+        display: block;
+    }
+</style>
+
+<div class="menuButtons" ng-controller="RadioMenu">
+    <div class="radioButton">
+        <input id="tRadio" type="radio" ng-model="isChecked" ng-value="'true'" checked='true'>
+        <label for="tRadio">True</label>
+    </div>
+    <div class="radioButton"> 
+        <input id="fRadio" type="radio" ng-model="isChecked" ng-value="'false'">
+        <label for='fRadio'>false</label>        
+    </div>
+    <div class="radioButton">  
+        <input id="oRadio" type="radio" ng-model="isChecked" ng-value="'other'">
+        <label for="oRadio">other</label>
+    </div>    
+    <div id="menuSelection">Selected Option: {{isChecked}}</div>
+</div>

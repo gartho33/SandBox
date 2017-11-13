@@ -1,0 +1,69 @@
+<style>
+    .ui-widget{
+        color: #0069ae;
+        background: white;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: sans-serif;
+        border: none;
+        box-shadow: 0px 0px 3px black inset;
+    }
+    .ui-multiselect-menu{                
+        background: white;
+        color: #d4d4d4;
+        padding: 7px;
+        border: 1px solid #bac5d0;
+        box-shadow: 0px 0px 3px #bac5d0 inset;
+    }
+    .ui-widget-header{
+        background: #9fbbb4;
+        border: none;
+    }
+    .ui-multiselect-menu .ui-state-hover{
+        background: #eee;
+        color: #ff8b88;
+        border: 1px solid #bac5d0;
+    }
+    .ui-multiselect-menu .ui-state-active{
+        color: #0069ae;
+        border: 1px solid lightblue;
+        background: indigo;
+    }
+    .ui-state-disabled{
+        color: white;
+        background: #ff8b88;
+        opacity: .4s !important;
+    }
+    .ui-state-default .ui-icon{
+        background-image: url(http://download.jqueryui.com/themeroller/images/ui-icons_222222_256x240.png);
+    }
+    label input{
+        display: none;
+    }
+    input[type="checkbox"]:checked + span{
+        color: #0069ae;
+    }
+</style>
+
+<h1>Hello SandBox</h1>
+<!--
+<div ng-controller="testList" >
+    <select multiple>
+        <option ng-repeat="user in options" ng-disabled="!user.selectable" ng-selected="user.isOwner">{{user.display_name}}</option>
+    </select>
+</div>
+
+<div>
+    <p>Test linking checkboxes (if not left then not right; if right then left)</p>
+
+
+    <br>
+    <link href="views/demoViews/switches/switches.css" rel="stylesheet" type="text/css">
+
+    <div ng-controller='testGrid' style="width: 500px; margin-left: auto; margin-right: auto;">
+        <div ui-grid="testGridOptions"></div>
+    </div>
+</div>
+-->
+<time-zone-picker></time-zone-picker>
+<!--<div ng-controller='testDate'></div>-->

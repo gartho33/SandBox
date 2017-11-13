@@ -1,0 +1,12 @@
+<input id="testDropdown" />
+<script>
+    var people = [
+        {label: 'jake', id: 1},
+        {label: 'erin', id: 2},
+        {label: 'mat', id: 3}
+    ]
+    $('#testDropdown').autocomplete({
+        minlength: 0,
+        source: people
+    })
+</script>

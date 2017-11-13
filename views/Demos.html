@@ -1,0 +1,68 @@
+<div class="accordionMenu">
+    <button class="accordion">
+        <div class="arrow"></div>
+        <label>Hexagon with a single div!</label>
+    </button>
+    <div class="panel">
+        <div ng-include="'views/demoViews/shapes/hex.html'"></div>
+    </div>
+    <button class="accordion">
+        <div class="arrow"></div>
+        <label>Arrow with borders</label>
+    </button>
+    <div class="panel">
+        <div ng-include="'views/demoViews/shapes/triangle.html'"></div>
+    </div>
+    <button class="accordion">
+        <div class="arrow"></div>
+        <label>Qtip</label>
+    </button>
+    <div class="panel">
+        <div ng-include="'views/demoViews/qtip/qtipDemo.html'"></div>
+    </div>    
+    <button class="accordion">
+        <div class="arrow"></div>
+        <label>Switches</label>
+    </button>
+    <div class="panel">
+        <div ng-include="'views/demoViews/switches/switches.html'"></div>
+    </div>
+    <button class="accordion">
+        <div class="arrow"></div>
+        <label>jQuery autocomplete</label>
+    </button>
+    <div class="panel">
+        <div ng-include="'views/demoViews/autocomplete/autocompleteDemo.html'"></div>
+    </div>    
+    <button class="accordion">
+        <div class="arrow"></div>
+        <label>Radio Menu</label>
+    </button>
+    <div class="panel">
+        <div ng-include="'views/demoViews/radioMenu/radioMenu.html'"></div>
+    </div>
+    
+    <button class="accordion">
+        <div class="arrow"></div>
+        <label>Empty</label>
+    </button>
+    <div class="panel"></div>
+</div>
+
+<script>
+    var acc = document.getElementsByClassName('accordion');
+    for(var i=0;i<acc.length; i++){
+        acc[i].onclick=function(){
+            for(var i=0; i<acc.length; i++){
+                if(acc[i] != this){
+                    acc[i].classList.remove('active');
+                    acc[i].nextElementSibling.classList.remove('show');
+                    acc[i].getElementsByClassName('arrow')[0].classList.remove('active');
+                }
+            }
+            this.classList.toggle('active');
+            this.nextElementSibling.classList.toggle('show');
+            this.getElementsByClassName('arrow')[0].classList.toggle('active');
+        }
+    }
+</script>

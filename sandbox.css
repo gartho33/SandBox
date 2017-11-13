@@ -1,0 +1,8 @@
+.ui-grid-row .ui-grid-cell:not(:first-child){
+    text-align: center;
+}
+.ui-grid-row .ui-grid-cell:not(:first-child) label{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

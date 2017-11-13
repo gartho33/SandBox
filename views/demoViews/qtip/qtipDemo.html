@@ -1,0 +1,224 @@
+<p title="Simple text from title atribute">Simple Text Qtip</p>
+<br/>
+<label id="htmlQtip">Html from page Qtip</label>
+<div class="toolTip">
+    <h3>Example box</h3>
+    <div class="triangle"></div>
+</div>
+<br>
+<p id="qtipStyle">Qtip style</p><br>
+<p id="customSytleQtip">custom style</p><br>
+<p id="qtipPosition">Position control</p><br>
+<p id="targetQtip">Another Target</p><br>
+<p id="showHideQtip">custome show/hide</p><br>
+<p id="animateQtip">jQuery animations! woo!</p><br>
+<button onclick="createNotice()">Notice</button><div id="noticeBox"></div>
+<button onclick="Alert()">Alert</button>
+<button onclick="Prompt()">Prompt</button>
+<button onclick="Confirm()">Confirm</button>
+<div id="jqueryui-slider"></div>
+
+<script>
+    $('p[title]').qtip();
+
+    $('#htmlQtip').qtip({
+        content:{
+            text: $('#htmlQtip').next('.toolTip')
+        }
+    });
+
+    $('#qtipTitle').qtip({
+        content:{
+            text: 'this is an example',
+            title: 'this is a title'
+        }
+    })
+
+    $('#qtipStyle').qtip({
+        content:{
+            text: 'an alternate style'
+        },
+        style:{
+            classes: 'qtip-dark qtip-rounded qtip-shadow'
+        } 
+    })
+
+    $('#customSytleQtip').qtip({
+        content:{
+            text: 'custome Styles!'
+        },
+        style: { classes: 'myCustomClass' }
+    })
+
+    $('#qtipPosition').qtip({
+        content: 'position control!',
+        position: {
+            my: 'bottom center',  // Position my top left...
+            at: 'top right', // at the bottom right of...
+        }
+    });
+
+    $('#targetQtip').qtip({
+        content:{
+            text: 'did you mean this target?'
+        },
+        position:{
+            target: $('#htmlQtip')
+        }
+    })
+
+    $('#showHideQtip').qtip({
+        content:{text:'custom show hide! Click it!'},
+        show: 'mouseover',
+        hide: 'click'
+    })
+
+    $('#animateQtip').qtip({
+        content:{text:'I\'m animated!'},
+        show: {
+            effect: function() {
+                $(this).fadeTo(500, 1);
+            }
+        },
+        hide: {
+            effect: function() {
+                $(this).slideUp();
+            }
+        }
+    })
+
+    function createNotice(persistent){
+        $('<div/>').qtip({
+            content: {
+                text: 'This is a jGrowl-esque qTip!',
+                title: {
+                    text: 'Attention!',
+                    button: true
+                }
+            },
+            position: {
+                target: [0,0],
+                container: $('#noticeBox')
+            },
+            show: {
+                event: false,
+                ready: true,
+                effect: function() {
+                    $(this).stop(0, 1).animate({ height: 'toggle' }, 400, 'swing');
+                },
+                delay: 0,
+                persistent: persistent
+            },
+            hide: {
+                event: false,
+                effect: function(api) {
+                    $(this).stop(0, 1).animate({ height: 'toggle' }, {complete: function(){api.destroy(true);}}, 400, 'swing',);
+                }
+            },
+            style: {
+                width: 250,
+                classes: 'jgrowl',
+                tip: false
+            },
+            events: {
+                render: function(event, api) {
+                    if(!api.options.show.persistent) {
+                        $(this).bind('mouseover mouseout', function(e) {
+                            var lifespan = 5000;
+
+                            clearTimeout(api.timer);
+                            if (e.type !== 'mouseover') {
+                                api.timer = setTimeout(function() { api.hide(e) }, lifespan);
+                            }
+                        })
+                        .triggerHandler('mouseout');
+                    }
+                }
+            }
+        });
+    }
+
+    /* custome popups (explore this for additional posibilites) */
+    function dialogue(content, title) {
+        $('body').qtip({
+            content: {
+                text: content,
+                title: title
+            },
+            position: {
+                my: 'center', at: 'center',
+                target: $(window)
+            },
+            show: {
+                ready: true,
+                modal: {
+                    on: true,
+                    blur: false
+                }
+            },
+            hide: false,
+            style: 'dialogue',
+            events: {
+                render: function(event, api) {
+                    $('button', api.elements.content).click(function(e) {
+                        api.hide(e);
+                    });
+                },
+                hide: function(event, api) { api.destroy(); }
+            }
+        });
+    }
+    window.Alert = function() {
+      var message = $('<p />', { text: 'This is a sample alert dialogue' }),
+          ok = $('<button />', { text: 'Ok', 'class': 'full' });
+
+        dialogue( message.add(ok), 'Alert!' );
+    }
+    window.Prompt = function() {
+      var message = $('<p />', { text: 'What do you think about these custom dialogues?' }),
+          input = $('<input />', { val: 'Fantastic!' }),
+          ok = $('<button />', {
+            text: 'Ok'
+          }),
+          cancel = $('<button />', {
+            text: 'Cancel'
+          });
+
+        dialogue( message.add(input).add(ok).add(cancel), 'Attention!' );
+    }
+    window.Confirm = function() {
+      var message = $('<p />', { text: 'Click a button to exit the custom dialogue' }),
+          ok = $('<button />', {
+            text: 'Ok'
+          }),
+          cancel = $('<button />', {
+            text: 'Cancel'
+          });
+
+        dialogue( message.add(ok).add(cancel), 'Do you agree?' );
+    }
+
+    /* jQuryui slider ancor */
+    var slider = $('#jqueryui-slider').slider({
+        slide: function(event, ui) {
+            handle.qtip('option', 'content.text', '' + ui.value);
+        }
+    }),
+        handle = $('.ui-slider-handle', slider);
+
+    handle.qtip({
+        id: 'uislider',
+        content: '' + slider.slider('option', 'value'),
+        position: {
+            my: 'bottom center',
+            at: 'top center',
+            container: handle 
+        },
+        hide: {
+            delay: 1000
+        },
+        style: {
+            widget: true
+        }
+    });
+</script>

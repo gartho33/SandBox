@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+        <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.1/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <!-- multiselect -->
+    <link href="assets/scripts/jQuery/ui/multiselect/jquery-ui-multiselect-widget-master/jquery.multiselect.css" rel="stylesheet" type="text/css">
+    <link href="assets/scripts/jQuery/ui/multiselect/jquery-ui-multiselect-widget-master/jquery.multiselect.filter.css" rel="stylesheet" type="text/css">
+    <script src="assets/scripts/jQuery/ui/multiselect/jquery-ui-multiselect-widget-master/src/jquery.multiselect.js"></script>
+        
+        <style>
+            .ui-widget{
+                color: blue;
+                background: white;
+                font-size: 14px;
+                font-weight: bold;
+                font-family: sans-serif;
+                border: none;
+                box-shadow: 0px 0px 3px black inset;
+            }
+            .ui-multiselect-menu{                
+                background: white;
+                padding: 7px;
+                border: none;
+                box-shadow: 0px 0px 1px black inset;
+            }
+            .ui-widget-header{
+                background: lightblue;
+                border: none;
+            }
+            .ui-multiselect-menu .ui-state-hover{
+                background: #eee;
+                color: lightcoral;
+                border: 1px solid lightblue;
+            }
+            label input{
+                display: none;
+            }
+            input[type="checkbox"]:checked + span{
+                color: red;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <select title="Basic example" multiple="multiple" name="example-basic" size="5">
+            <option value="option1" disabled>Option 1</option>
+            <option value="option2" selected>Option 2</option>
+            <option value="option3">Option 3</option>
+            <option value="option4">Option 4</option>
+            <option value="option5">Option 5</option>
+            <option value="option6">Option 6</option>
+            <option value="option7">Option 7</option>
+            <option value="option8">Option 8</option>
+            <option value="option9">Option 9</option>
+            <option value="option10">Option 10</option>
+            <option value="option11">Option 11</option>
+            <option value="option12">Option 12</option>
+        </select>
+    </body>
+    <script>
+        $(function(){
+           $("select").multiselect({
+               
+            });
+        });
+    </script>
+</html>
